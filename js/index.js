@@ -8,6 +8,6 @@ $.getJSON(getIP).done(function(location) {
         APPID: '9334f947893792dcb9b2e2c05ae23eb0'
     }).done(function(weather) {
         console.log(weather)
+        $("#data").html(weather.name + ", " + weather.sys.country + "<br>" + weather.main.temp);
     });
 });
-
