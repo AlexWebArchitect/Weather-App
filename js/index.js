@@ -1,22 +1,13 @@
-function plsDoStuff() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      const latit = position.coords.latitude;
-      const longit = position.coords.longitude;
-      $("#data").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
+var getIP = 'http://ip-api.com/json/';
+var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather';
+$.getJSON(getIP).done(function(location) {
+    $.getJSON(openWeatherMap, {
+        lat: location.lat,
+        lon: location.lon,
+        units: 'metric',
+        APPID: '9334f947893792dcb9b2e2c05ae23eb0'
+    }).done(function(weather) {
+        console.log(weather)
     });
-  }
-
-  $.ajax({
-      url: "api.openweathermap.org/data/2.5/weather?lat=latit&lon=longit&APPID=93bbb527a6fdda2a5bd8906b20da0565",
-      /*dataType: "jsonp",
-      data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
-      success: function( response ) {
-        $("#random_quote").html("<p id='random_quote' class='lead text-center'>" +
-          response.quoteText + "<br/>&dash; " + response.quoteAuthor + "</p>");*/
-  });
-}
-
-$(function() {
-  plsDoStuff();
 });
+
