@@ -13,5 +13,34 @@ $.getJSON(getIP).done(function(location) {
             + "<br>" + weather.main.temp
             + "<br>" + weather.weather[0].description
             + "<br>" + weather.weather[0].icon);
+        switch (weather.weather[0].description) {
+            case "clear sky":
+                $(".sunny").removeClass("hidden");
+                break;
+            case "few clouds":
+                $(".cloudy").removeClass("hidden");
+                break;
+            case "scattered clouds":
+                $(".cloudy").removeClass("hidden");
+                break;
+            case "broken clouds":
+                $(".cloudy").removeClass("hidden");
+                break;
+            case "shower rain":
+                $(".sun-shower").removeClass("hidden");
+                break;
+            case "rain":
+                $(".rainy").removeClass("hidden");
+                break;
+            case "thunderstorm":
+                $(".thunder-storm").removeClass("hidden");
+                break;
+            case "snow":
+                $(".flurries").removeClass("hidden");
+                break;
+            case "mist":
+                $(".cloudy").removeClass("hidden");
+                break;
+        }
     });
 });
