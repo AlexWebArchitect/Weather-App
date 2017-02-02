@@ -10,7 +10,8 @@ $.getJSON(getIP).done(function(location) {
         console.log(weather);
         $("#data").html(weather.name
             + ", " + weather.sys.country
-            + "<br>" + weather.main.temp + "<br>");
+            + "<br>" + weather.main.temp
+            + "<a id='tempr'>°C</a>" + "<br>");
         switch (weather.weather[0].description) {
             case "clear sky":
                 $(".sunny").removeClass("hidden");
