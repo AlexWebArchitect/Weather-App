@@ -1,3 +1,9 @@
+function convertToF(celsius) {
+  var fahrenheit;
+  fahrenheit = celsius * 9/5 + 32;
+  return fahrenheit;
+}
+//convertToF(30);
 var getIP = 'http://ip-api.com/json/';
 var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather';
 $.getJSON(getIP).done(function(location) {
@@ -43,3 +49,24 @@ $.getJSON(getIP).done(function(location) {
         }
     });
 });
+/*
+$("#tempr").on("click", function(){
+  $("#tempr").toggleClass("celcius");
+  $("#tempr").toggleClass("fahrenheit");
+
+  if ($(this).hasClass('fahrenheit')) {
+    $('#tempr').text(setCelcius());
+    return;
+  }
+
+  $('#tempr').text(setFahrenheit());
+});
+
+function setCelcius(){
+  var cel = (temp - 32) * 5/9;
+  return cel + "° C";
+};
+
+function setFahrenheit(){
+  return temp + "° F";
+};*/
