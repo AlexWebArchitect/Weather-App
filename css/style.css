@@ -5,7 +5,10 @@ body { padding: 70px 70px 70px 70px; }
 #tempr { color: white; font-size: 100%; }
 
 .hidden { display: none; }
-
+/*
+.celcius { color: yellow; }
+.fahrenheit { color: blue; }
+*/
 html { box-sizing: border-box; }
 html *,
 html *:before,
