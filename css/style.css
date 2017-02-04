@@ -1,14 +1,11 @@
 body { padding: 70px 70px 70px 70px; }
 
-#data { color: white; font-size: 170%; }
-
-#tempr { color: white; font-size: 100%; }
+.tempr { color: white; font-size: 170%; }
+.celsius { color: white; font-size: 100%; }
+.fahrenheit { color: white; font-size: 100%; }
 
 .hidden { display: none; }
-/*
-.celcius { color: yellow; }
-.fahrenheit { color: blue; }
-*/
+
 html { box-sizing: border-box; }
 html *,
 html *:before,

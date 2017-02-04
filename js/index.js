@@ -1,72 +1,66 @@
-function convertToF(celsius) {
-  var fahrenheit;
-  fahrenheit = celsius * 9/5 + 32;
-  return fahrenheit;
-}
-//convertToF(30);
-var getIP = 'http://ip-api.com/json/';
-var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather';
-$.getJSON(getIP).done(function(location) {
-    $.getJSON(openWeatherMap, {
-        lat: location.lat,
-        lon: location.lon,
-        units: 'metric',
-        APPID: '9334f947893792dcb9b2e2c05ae23eb0'
-    }).done(function(weather) {
-        console.log(weather);
-        $("#data").html(weather.name
-            + ", " + weather.sys.country
-            + "<br>" + weather.main.temp
-            + "<a id='tempr'>°C</a>" + "<br>");
-        switch (weather.weather[0].description) {
-            case "clear sky":
-                $(".sunny").removeClass("hidden");
-                break;
-            case "few clouds":
-                $(".cloudy").removeClass("hidden");
-                break;
-            case "scattered clouds":
-                $(".cloudy").removeClass("hidden");
-                break;
-            case "broken clouds":
-                $(".cloudy").removeClass("hidden");
-                break;
-            case "shower rain":
-                $(".sun-shower").removeClass("hidden");
-                break;
-            case "rain":
-                $(".rainy").removeClass("hidden");
-                break;
-            case "thunderstorm":
-                $(".thunder-storm").removeClass("hidden");
-                break;
-            case "snow":
-                $(".flurries").removeClass("hidden");
-                break;
-            case "mist":
-                $(".cloudy").removeClass("hidden");
-                break;
-        }
+function mainFunction() {
+    var getIP = 'http://ip-api.com/json/';
+    var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather';
+    $.getJSON(getIP).done(function(location) {
+        $.getJSON(openWeatherMap, {
+            lat: location.lat,
+            lon: location.lon,
+            units: 'metric',
+            APPID: '9334f947893792dcb9b2e2c05ae23eb0'
+        }).done(function(weather) {
+            console.log(weather);
+
+            var geolocation = weather.name + ", " + weather.sys.country;
+            $("#geolocation").html(geolocation);
+            var temperature = weather.main.temp;
+            $("#data").html(temperature);
+            var degrees = "<a class='celsius'>°C</a>"
+            + " | " + "<a class='fahrenheit'>°F</a>";
+            $("#degrees").html(degrees);
+
+            $(".celsius").on("click", function(){
+                temperature = weather.main.temp;
+                $("#data").html(temperature);
+            });
+
+            $(".fahrenheit").on("click", function(){
+                temperature = Math.round(weather.main.temp * 9/5 + 32);
+                $("#data").html(temperature);
+            });
+
+            switch (weather.weather[0].description) {
+                case "clear sky":
+                    $(".sunny").removeClass("hidden");
+                    break;
+                case "few clouds":
+                    $(".cloudy").removeClass("hidden");
+                    break;
+                case "scattered clouds":
+                    $(".cloudy").removeClass("hidden");
+                    break;
+                case "broken clouds":
+                    $(".cloudy").removeClass("hidden");
+                    break;
+                case "shower rain":
+                    $(".sun-shower").removeClass("hidden");
+                    break;
+                case "rain":
+                    $(".rainy").removeClass("hidden");
+                    break;
+                case "thunderstorm":
+                    $(".thunder-storm").removeClass("hidden");
+                    break;
+                case "snow":
+                    $(".flurries").removeClass("hidden");
+                    break;
+                case "mist":
+                    $(".cloudy").removeClass("hidden");
+                    break;
+            }
+        });
     });
+}
+
+$(function() {
+  mainFunction();
 });
-/*
-$("#tempr").on("click", function(){
-  $("#tempr").toggleClass("celcius");
-  $("#tempr").toggleClass("fahrenheit");
-
-  if ($(this).hasClass('fahrenheit')) {
-    $('#tempr').text(setCelcius());
-    return;
-  }
-
-  $('#tempr').text(setFahrenheit());
-});
-
-function setCelcius(){
-  var cel = (temp - 32) * 5/9;
-  return cel + "° C";
-};
-
-function setFahrenheit(){
-  return temp + "° F";
-};*/
