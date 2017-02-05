@@ -1,2 +1,2 @@
 # Weather-App
-work in progress
+Application, which shows you local weather.
