@@ -27,7 +27,8 @@ function mainFunction() {
                 temperature = Math.round(weather.main.temp * 9/5 + 32);
                 $("#data").html(temperature);
             });
-            
+            $("#wind").html("SW: " + weather.wind.speed);
+
             $("#description").html(weather.weather[0].description);
             switch (weather.weather[0].description) {
                 case "clear sky":
